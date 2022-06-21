@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'eclipse'
+}
+
+group = 'com.juhan'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	// JSP 사용 설정
+	implementation 'javax.servlet:jstl' 
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	
+	// lombok
+	implementation 'org.projectlombok:lombok'
+	
+	// gson
+	implementation 'com.google.code.gson:gson:2.8.5'
+
+	// json
+	implementation 'org.json:json:20220320'
+	
+	
+	// logback-core
+	implementation 'ch.qos.logback:logback-core:1.2.3'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
